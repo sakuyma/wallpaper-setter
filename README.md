@@ -1,5 +1,4 @@
-```markdown
-# Wallpaper Launcher
+# Wallpaper Setter
 
 A modern, lightweight GTK4 wallpaper picker for Linux with a clean grid interface.
 
@@ -63,4 +62,3 @@ Browse wallpapers in the grid, click to apply. Press ESC to close.
 ## License
 
 MIT
-```
