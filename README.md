@@ -18,20 +18,13 @@ A modern, lightweight GTK4 wallpaper picker for Linux with a clean grid interfac
 - awww (wallpaper daemon)
 - Rust (latest stable)
 
-## Installation
-
 ### From Source
 
 ```bash
+sudo pacman -S gtk4 imagemagick awwww just --needed
 git clone https://github.com/yourusername/wallpapers-rs
 cd wallpapers-rs
-cargo build --release
-sudo cp target/release/wallpapers-rs /usr/local/bin/
-```
-
-### Install Dependencies
-```bash
-sudo pacman -S gtk4 imagemagick awwww
+just
 ```
 
 ## Configuration
@@ -41,8 +34,15 @@ sudo pacman -S gtk4 imagemagick awwww
 Add to `~/.config/hypr/hyprland.conf`:
 
 ```conf
-windowrulev2 = float, class:^(com.wallpaper.setter)$
-windowrulev2 = center, class:^(com.wallpaper.setter)$
+windowrule {
+    name = wallpaper 
+    match:class = com.wallpaper.setter
+    float = true
+    size = 900 500 
+    center = true
+    opacity = 1
+    animation = popin 85%
+}
 ```
 
 ### Wallpaper Directory
