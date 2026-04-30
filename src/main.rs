@@ -256,6 +256,15 @@ fn apply_wallpaper(path: &PathBuf) {
 
     // Apply wallpaper with awww (like in bash script)
     if Command::new("awww").arg("--version").output().is_ok() {
+        let fps = gtk4::gdk::Display::default()
+    .unwrap()
+    .monitors()
+    .item(0)
+    .unwrap()
+    .downcast::<gtk4::gdk::Monitor>()
+    .unwrap()
+    .refresh_rate()
+    / 1000;
         let _ = Command::new("awww")
             .args([
                 "img",
@@ -263,7 +272,7 @@ fn apply_wallpaper(path: &PathBuf) {
                 "--transition-type",
                 "any",
                 "--transition-fps",
-                "180",
+                &fps.to_string(),
             ])
             .status();
         println!("Applied via awww: {}", path_str);
